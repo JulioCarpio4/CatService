@@ -1,0 +1,25 @@
+Version your API: 
+- One good practice is always add the version to the 
+path in the API, so users can still be using the 
+previous version without breaking anything or 
+forcing them to use the new one. Ex: /api/v1/route
+
+Name resources in plural: 
+It is a good practice to manage resources in plural. 
+Always remember: Your API is used by other humans and should be precise. 
+This goes also for naming your resources.
+
+I always imagine a resource like a box. 
+In our example the box is a collection that stores different cats.
+
+Group Associated resources together: 
+This means being able to nest our URLs, for
+example if we have let say cat vaccination records
+we could have something like 
+api/v1/cats/:catId/vaccinations to ask for the 
+vaccine records for a specific cat. 
+A GOOD RULE OF THUMB IS TO ONLY NEST THREE LEVELS
+DEEP AT MAXIMUM
+
+Integrate filtering, sorting and pagination:
+Performance of the API is always a key factor!!

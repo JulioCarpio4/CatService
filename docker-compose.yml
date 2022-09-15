@@ -1,0 +1,21 @@
+version: '3.4'
+services: 
+  michiapp: 
+    container_name: js-michi-docker
+    restart: always
+    ports: 
+      - 3001:${PORT}
+    env_file:
+      - .env
+    build: 
+      context: .
+      dockerfile: dockerfile
+      args: 
+        - PORT=${PORT}
+    volumes: 
+      - volume:/usr/src/app
+      - ignore:/usr/src/app/node_modules/
+volumes: 
+  ignore:
+  volume:
+    

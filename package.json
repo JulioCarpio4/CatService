@@ -1,0 +1,22 @@
+{
+    "name": "michi_service",
+    "version": "1.0.0",
+    "description": "A web service app to manage data about michis",
+    "author": "Julio Carpio <julio_carpio4@hotmail.com>",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "start": "node src/index.js",
+        "start:watch": "nodemon src/index.js",
+        "start:inspect": "nodemon --inspect src/index.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.0",
+        "express": "^4.16.1",
+        "jsonschema": "^1.4.1",
+        "uuid": "^9.0.0"
+    },
+    "devDependencies": {
+        "nodemon": "2.0.19"
+    }
+}
