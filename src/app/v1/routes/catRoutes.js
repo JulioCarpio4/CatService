@@ -1,5 +1,5 @@
 import express from 'express'
-import * as catController from '../../controllers/catController.js'
+import * as catController from '../controllers/catController.js'
 
 const router = express.Router()
 

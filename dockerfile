@@ -15,4 +15,4 @@ COPY .env ./
 
 #Expose port and run server.
 EXPOSE ${PORT}
-CMD ["node", "src/index.js"]
+CMD ["node", "src/app/index.js"]

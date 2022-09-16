@@ -1,5 +1,5 @@
 import * as catService from '../services/catService.js'
-import { validateInput } from '../v1/validators/schemaValidator.js'
+import { validateInput } from '../validators/schemaValidator.js'
 
 const getAllCats = (req, res) => {
     const { 
@@ -9,7 +9,7 @@ const getAllCats = (req, res) => {
         size } = req.query
     try {
         const cats = catService.getCats({ colorType, favoriteMeal, page, size })
-        res.send({ status: 'OK', data: cats })
+        res.send({ status: 'OK', data: cats.cats, page: cats.page, size: cats.size })
     } catch (error) {
         res.status(error?.status || 500)
         .send({ status: 'FAILED', data: { error: error?.message || error }})
