@@ -2,11 +2,29 @@ import { getDatabase, saveToDatabase } from "./utils.js";
 
 const getAllCats = (params) => {
   try {
-    let DB = getDatabase();
+    let DB = getDatabase().Cats;
+    const size = Number(params.size ?? 5)
+    const page = (params.page ?? 1) - 1
 
     if (params.colorType) {
-        return DB.Cats.filter(cat =>
+        DB = DB.filter(cat =>
             cat.colorType.toLowerCase().includes(params.colorType.toLowerCase()))
+    }
+
+    if (params.favoriteMeal) {
+      DB = DB.filter(cat =>
+        cat.favoriteMeals.filter(meal =>
+          meal.toLowerCase() === params.favoriteMeal.toLowerCase()
+        ).length > 0
+      )
+    }
+
+    const dataToBeReturned = DB.slice(page * size, (page * size) + size)
+    
+    return {
+      cats: dataToBeReturned,
+      page: page + 1,
+      size: dataToBeReturned.length
     }
 
   } catch (error) {

@@ -2,9 +2,13 @@ import * as catService from '../services/catService.js'
 import { validateInput } from '../v1/validators/schemaValidator.js'
 
 const getAllCats = (req, res) => {
-    const { colorType } = req.query
+    const { 
+        colorType, 
+        favoriteMeal,
+        page, 
+        size } = req.query
     try {
-        const cats = catService.getCats({ colorType })
+        const cats = catService.getCats({ colorType, favoriteMeal, page, size })
         res.send({ status: 'OK', data: cats })
     } catch (error) {
         res.status(error?.status || 500)
