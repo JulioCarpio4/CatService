@@ -9,9 +9,11 @@
         "start": "node src/app/index.js",
         "start:watch": "nodemon src/app/index.js",
         "start:inspect": "nodemon --inspect src/app/index.js",
-        "test": "jest"
+        "test": "node --experimental-vm-modules ./node_modules/.bin/jest"
     },
     "dependencies": {
+        "awilix": "^7.0.3",
+        "awilix-express": "^7.0.0",
         "body-parser": "^1.20.0",
         "cors": "^2.8.5",
         "express": "^4.16.1",
