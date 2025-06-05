@@ -1,0 +1,165 @@
+{
+  "Cats": [
+    {
+      "id": "61dbae02-c147-4e28-863c-db7bd402b2d6",
+      "firstName": "Kiara",
+      "lastName": "Diaz",
+      "age": 3,
+      "colorType": "Tuxedo Tabby",
+      "nicknames": [
+        "Gati",
+        "Gatis",
+        "Mishigan",
+        "Gatia"
+      ],
+      "createdAt": "10/14/2022, 10:33:00 AM",
+      "updatedAt": "9/15/2022, 12:08:22 AM",
+      "favoriteMeals": [
+        "Whiskas beef",
+        "Whiskas temptations",
+        "Friskies purple color",
+        "Friskies blue color",
+        "Friskies red color"
+      ]
+    },
+    {
+      "id": "4a3d9aaa-608c-49a7-a004-66305ad4ab50",
+      "firstName": "Minimoose",
+      "lastName": "von Ahn",
+      "age": 11,
+      "colorType": "Smoke Tuxedo",
+      "nicknames": [
+        "Señora Minimoose",
+        "Doña minimoose"
+      ],
+      "createdAt": "10/14/2022, 10:33:00 AM",
+      "updatedAt": "10/14/2022, 10:33:00 AM",
+      "favoriteMeals": [
+        "Friskies purple color",
+        "Friskies blue color",
+        "Parmesan Cheese"
+      ]
+    },
+    {
+      "id": "d8be2362-7b68-4ea4-a1f6-03f8bc4eede7",
+      "firstName": "Caribou",
+      "lastName": "von Ahn",
+      "age": 9,
+      "colorType": "Brown Mackeral Tabby with Gray Field",
+      "nicknames": [
+        "Bebote",
+        "Don Caribou"
+      ],
+      "createdAt": "10/14/2022, 10:33:00 AM",
+      "updatedAt": "10/14/2022, 10:33:00 AM",
+      "favoriteMeals": [
+        "Friskies blue color",
+        "Friskies purple color"
+      ]
+    },
+    {
+      "id": "3d5b3c45-8b86-4403-80be-35d986abd81b",
+      "firstName": "Bullwinkle",
+      "lastName": "von Ahn",
+      "age": 7,
+      "colorType": "Tortie",
+      "nicknames": [
+        "Pullwinkle"
+      ],
+      "createdAt": "10/14/2022, 10:33:00 AM",
+      "updatedAt": "10/14/2022, 10:33:00 AM",
+      "favoriteMeals": [
+        "Friskies purple color",
+        "Friskies blue color"
+      ]
+    },
+    {
+      "id": "f2b36d0c-beee-457a-98be-a5aa1f5fa496",
+      "firstName": "Panda",
+      "lastName": "von Ahn",
+      "age": 5,
+      "colorType": "Bicolor",
+      "nicknames": [
+        "Gordo",
+        "Pandita",
+        "Bebe Pandita"
+      ],
+      "createdAt": "10/14/2022, 10:33:00 AM",
+      "updatedAt": "10/14/2022, 10:33:00 AM",
+      "favoriteMeals": [
+        "Friskies blue color",
+        "Friskies purple color",
+        "Parmesan Cheese",
+        "Grounded Chicken"
+      ]
+    },
+    {
+      "id": "7d202687-bbb6-4d96-83c8-fa679753812f",
+      "firstName": "Elkie",
+      "lastName": "von Ahn",
+      "age": 3,
+      "colorType": "Harlequin",
+      "nicknames": [
+        "Princesa",
+        "Princesa Elkie",
+        "Doña Elkie",
+        "Elkies"
+      ],
+      "createdAt": "10/14/2022, 10:33:00 AM",
+      "updatedAt": "10/14/2022, 10:33:00 AM",
+      "favoriteMeals": [
+        "Friskies purple color",
+        "Parmesan Cheese"
+      ]
+    },
+    {
+      "id": "8e33c68d-54a0-4550-885a-3c7f34bc7450",
+      "firstName": "Kate",
+      "lastName": "von Ahn",
+      "age": 5,
+      "colorType": "Bicolor",
+      "nicknames": [
+        "Hitler",
+        "Eva"
+      ],
+      "createdAt": "10/14/2022, 10:33:00 AM",
+      "updatedAt": "10/14/2022, 10:33:00 AM",
+      "favoriteMeals": [
+        "Friskies red flavor"
+      ]
+    },
+    {
+      "id": "435c50ec-0082-43b5-9914-e650518b97f7",
+      "firstName": "Arya",
+      "lastName": "von Ahn",
+      "age": 3,
+      "colorType": "Brown Torby and White",
+      "nicknames": [
+        "Hija de Hitler",
+        "Evita"
+      ],
+      "createdAt": "10/14/2022, 10:33:00 AM",
+      "updatedAt": "10/14/2022, 10:33:00 AM",
+      "favoriteMeals": [
+        "Friskies red flavor"
+      ]
+    },
+    {
+      "id": "279b17ed-f803-4ae7-b385-6cbf4534ad89",
+      "firstName": "Badger",
+      "lastName": "von Ahn",
+      "age": 0.7,
+      "colorType": "Bicolor",
+      "nicknames": [
+        "Badgersito",
+        "Savings yall",
+        "Niño"
+      ],
+      "createdAt": "10/14/2022, 10:33:00 AM",
+      "updatedAt": "10/14/2022, 10:33:00 AM",
+      "favoriteMeals": [
+        "Grounded Chicken"
+      ]
+    }
+  ]
+}
