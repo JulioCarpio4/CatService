@@ -1,3 +1,4 @@
+// @ts-nocheck
 import fs from "fs";
 
 export default class DBConnection {
@@ -12,7 +13,7 @@ export default class DBConnection {
   };
 
   getDatabase = (path = "./src/app/v2/data/db.json") => {
-    const DB = JSON.parse(fs.readFileSync(path));
+    const DB = JSON.parse(fs.readFileSync(path).toString());
     return DB;
   };
 }

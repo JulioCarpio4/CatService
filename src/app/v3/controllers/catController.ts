@@ -1,8 +1,9 @@
-// @ts-nocheck
 import * as catService from '../services/catService.js'
 import { validateInput } from '../validators/schemaValidator.js'
+import type { Request, Response } from 'express';
+import { buildErrorResponse } from '../shared/errors.js';
 
-const getAllCats = (req, res) => {
+export const getAllCats = (req: Request, res: Response) => {
     const { 
         colorType, 
         favoriteMeal,
@@ -11,13 +12,18 @@ const getAllCats = (req, res) => {
     try {
         const cats = catService.getCats({ colorType, favoriteMeal, page, size })
         res.send({ status: 'OK', data: cats.cats, page: cats.page, size: cats.size })
-    } catch (error) {
-        res.status(error?.status || 500)
-        .send({ status: 'FAILED', data: { error: error?.message || error }})
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            res.status((error as any).status || 500)
+                .send({ status: 'FAILED', data: { error: error.message }})
+        } else {
+            res.status(500)
+                .send({ status: 'FAILED', data: { error: String(error) }})
+        }
     }
-}
+};
 
-const getCat = (req, res) => {
+export const getCat = (req: Request, res: Response) => {
     const {
         params: { catId },
     } = req
@@ -36,16 +42,15 @@ const getCat = (req, res) => {
         const cat = catService.getCat(catId)
         res.send({ status: 'OK', data: cat})
     } catch (error) {
+        const errorResponse = buildErrorResponse(error);
         res
-        .status(error?.status || 500)
-        .send({ status: 'FAILED', data: {
-            error: error?.message || error
-        }})
+          .status(errorResponse.status)
+          .send(errorResponse.body);
     }
     
-}
+};
 
-const createCat = (req, res) => {
+export const createCat = (req: Request, res: Response) => {
     const { body } = req
 
     if (!validateInput(body)) {
@@ -59,14 +64,15 @@ const createCat = (req, res) => {
         const newCat = catService.addCat(body)
         res.status(201).send({ status: 'OK', data: newCat })
     } catch (error) {
+        const errorResponse = buildErrorResponse(error);
         res
-        .status(error?.status || 500)
-        .send({ status: 'FAILED', data: { error: error?.message || error } })
+          .status(errorResponse.status)
+          .send(errorResponse.body);
     }
     
-}
+};
 
-const updateCat = (req, res) => {
+export const updateCat = (req: Request, res: Response) => {
     const {
         body,
         params: {
@@ -86,15 +92,15 @@ const updateCat = (req, res) => {
         const updatedCat = catService.updateCat(catId, body)
         res.send({ status: 'OK', data: updatedCat})
     } catch (error) {
+        const errorResponse = buildErrorResponse(error);
         res
-      .status(error?.status || 500)
-      .send({ status: "FAILED", data: { error: error?.message || error } });
+          .status(errorResponse.status)
+          .send(errorResponse.body);
     }
     
-}
+};
 
-const deleteCat = (req, res) => {
-
+export const deleteCat = (req: Request, res: Response) => {
     const {
         params: { catId }
     } = req
@@ -110,19 +116,14 @@ const deleteCat = (req, res) => {
 
     try {
         catService.deleteCat(catId)
-        res.status(204).send({status: 'OK'})
-    } catch (error) {
         res
-      .status(error?.status || 500)
-      .send({ status: "FAILED", data: { error: error?.message || error } });
+          .status(204)
+          .send({status: 'OK'});
+    } catch (error) {
+        const errorResponse = buildErrorResponse(error);
+        res
+          .status(errorResponse.status)
+          .send(errorResponse.body);
     }
     
-}
-
-export {
-    getAllCats,
-    getCat,
-    createCat,
-    updateCat,
-    deleteCat
-}
+};

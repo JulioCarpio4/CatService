@@ -1,7 +1,7 @@
-FROM node:16
+FROM node:22-alpine AS build
 
 #Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 #Copy app dependencies
 COPY package*.json ./
@@ -10,9 +10,20 @@ COPY package*.json ./
 RUN npm install
 
 #Copy source code
-COPY . . /usr/src/app/
+COPY . .
 COPY .env ./
+
+RUN npm run build
+
+FROM node:22 as production
+
+WORKDIR /app
+
+
+COPY /package*.json ./
+RUN npm ci --only=production
+COPY --from=build /app/dist ./dist
 
 #Expose port and run server.
 EXPOSE ${PORT}
-CMD ["node", "src/app/index.js"]
+CMD ["node", "dist/app/index.js"]

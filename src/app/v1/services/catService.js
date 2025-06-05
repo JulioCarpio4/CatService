@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as Cats from '../data/Cat.js'
 import { v4 as uuidv4 } from 'uuid'
 

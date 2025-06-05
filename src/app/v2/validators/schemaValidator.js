@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Validator } from 'jsonschema';
 import { catSchema } from './catSchema.js'
 

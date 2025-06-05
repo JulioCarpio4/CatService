@@ -1,21 +1,21 @@
-// @ts-nocheck
 import { getDatabase, saveToDatabase } from "./utils.js";
+import type { SearchParams, Cat, StoredCat } from '../shared/types.js';
 
-const getAllCats = (params) => {
+export const getAll = (params: SearchParams) => {
   try {
     let DB = getDatabase().Cats;
     const size = Number(params.size ?? 5)
     const page = (params.page ?? 1) - 1
 
     if (params.colorType) {
-        DB = DB.filter(cat =>
-            cat.colorType.toLowerCase().includes(params.colorType.toLowerCase()))
+        DB = DB.filter((cat: Cat) =>
+            cat.colorType.toLowerCase().includes(params.colorType!.toLowerCase()))
     }
 
     if (params.favoriteMeal) {
-      DB = DB.filter(cat =>
-        cat.favoriteMeals.filter(meal =>
-          meal.toLowerCase() === params.favoriteMeal.toLowerCase()
+      DB = DB.filter((cat: Cat) =>
+        cat.favoriteMeals.filter((meal: string) =>
+          meal.toLowerCase() === params.favoriteMeal!.toLowerCase()
         ).length > 0
       )
     }
@@ -33,10 +33,10 @@ const getAllCats = (params) => {
   }
 };
 
-const getCat = (catId) => {
+export const get = (catId: string) => {
   try {
     const DB = getDatabase();
-    const cat = DB.Cats.find((cat) => cat.id === catId);
+    const cat = DB.Cats.find((cat: StoredCat) => cat.id === catId);
     if (!cat) {
       throw {
         status: 400,
@@ -44,17 +44,17 @@ const getCat = (catId) => {
       };
     }
     return cat;
-  } catch (error) {
+  } catch (error: any) {
     throw { status: error?.status || 500, message: error?.message || error };
   }
 };
 
-const addNewCat = (newCat) => {
+export const add = (newCat: Cat) => {
   try {
     const DB = getDatabase();
     const isAlreadyAdded =
       DB.Cats.findIndex(
-        (cat) =>
+        (cat: Cat) =>
           cat.firstName === newCat.firstName && cat.lastName === newCat.lastName
       ) > -1;
 
@@ -67,7 +67,7 @@ const addNewCat = (newCat) => {
     DB.Cats.push(newCat);
     saveToDatabase(DB);
     return newCat;
-  } catch (error) {
+  } catch (error: any) {
     throw {
       status: 500,
       message: error?.message || error,
@@ -75,10 +75,10 @@ const addNewCat = (newCat) => {
   }
 };
 
-const updateCat = (catId, cat) => {
+export const update = (catId: string, cat: StoredCat) => {
   try {
     const DB = getDatabase();
-    const indexForUpdate = DB.Cats.findIndex((cat) => cat.id === catId);
+    const indexForUpdate = DB.Cats.findIndex((cat: StoredCat) => cat.id === catId);
     if (indexForUpdate === -1) {
       throw {
         status: 400,
@@ -93,7 +93,7 @@ const updateCat = (catId, cat) => {
     DB.Cats[indexForUpdate] = updatedCat;
     saveToDatabase(DB);
     return updatedCat;
-  } catch (error) {
+  } catch (error: any) {
     throw {
       status: error?.status || 500,
       message: error?.message || error,
@@ -101,22 +101,20 @@ const updateCat = (catId, cat) => {
   }
 };
 
-const deleteCat = (catId) => {
+export const remove = (catId: string) => {
   try {
     const DB = getDatabase();
-    const indexForDeletion = DB.Cats.findIndex((cat) => cat.id === catId);
+    const indexForDeletion = DB.Cats.findIndex((cat: StoredCat) => cat.id === catId);
     if (indexForDeletion === -1) {
       throw {
         status: 400,
         message: `Can't find cat with the id '${catId}'`,
       };
     }
-  } catch (error) {
+
+    DB.Cats.splice(indexForDeletion, 1);
+    saveToDatabase(DB);
+  } catch (error: any) {
     throw { status: error?.status || 500, message: error?.message || error };
   }
-
-  DB.Cats.splice(indexForDeletion, 1);
-  saveToDatabase(DB);
 };
-
-export { getAllCats, getCat, addNewCat, updateCat, deleteCat };
