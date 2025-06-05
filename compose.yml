@@ -1,7 +1,6 @@
-version: '3.4'
 services: 
-  michiapp: 
-    container_name: js-michi-docker
+  catservice: 
+    container_name: ts-catservice-docker
     restart: always
     ports: 
       - 3001:${PORT}
@@ -9,7 +8,7 @@ services:
       - .env
     build: 
       context: .
-      dockerfile: dockerfile
+      target: production
       args: 
         - PORT=${PORT}
     volumes: 
