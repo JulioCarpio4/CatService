@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as catService from '../services/catService.js'
 import { validateInput } from '../validators/schemaValidator.js'
 

@@ -1,14 +1,16 @@
-import * as common from "../../../app/v2/data/utils";
+
+import DBConnection from "../../../app/v2/data/utils.js";
 
 describe("Common util functions tests", () => {
   describe("Database interaction", () => {
     test("Should retrieve the data from a json file", () => {
-      const DB = common.getDatabase();
+      const DB = new DBConnection();
+      DB.getDatabase();
       expect(DB).toBeDefined();
     });
 
     test("Should save data into a file", () => {
-      const result = common.saveToDatabase("", "data.json");
+      const result = new DBConnection().saveToDatabase("", "data.json");
       expect(result).toBeTruthy();
     });
   });

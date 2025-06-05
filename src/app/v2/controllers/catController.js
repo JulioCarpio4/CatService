@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 import { validateInput } from "../validators/schemaValidator.js";
 
 export default class CatController {

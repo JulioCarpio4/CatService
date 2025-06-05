@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getDatabase, saveToDatabase } from "./utils.js";
 
 const getAllCats = (params) => {

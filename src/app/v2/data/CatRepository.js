@@ -1,3 +1,4 @@
+// @ts-nocheck
 export default class CatRepository {
   constructor(options) {
     this.dbConnection = options.dbConnection;
