@@ -1,33 +1,35 @@
 import { getDatabase, saveToDatabase } from "./utils.js";
-import type { SearchParams, Cat, StoredCat } from '../shared/types.js';
+import type { SearchParams, Cat, StoredCat } from "../shared/types.js";
 
 export const getAll = (params: SearchParams) => {
   try {
     let DB = getDatabase().Cats;
-    const size = Number(params.size ?? 5)
-    const page = (params.page ?? 1) - 1
+    const size = Number(params.size ?? 5);
+    const page = (params.page ?? 1) - 1;
 
     if (params.colorType) {
       DB = DB.filter((cat: Cat) =>
-        cat.colorType.toLowerCase().includes(params.colorType!.toLowerCase()))
+        cat.colorType.toLowerCase().includes(params.colorType!.toLowerCase()),
+      );
     }
 
     if (params.favoriteMeal) {
-      DB = DB.filter((cat: Cat) =>
-        cat.favoriteMeals.filter((meal: string) =>
-          meal.toLowerCase() === params.favoriteMeal!.toLowerCase()
-        ).length > 0
-      )
+      DB = DB.filter(
+        (cat: Cat) =>
+          cat.favoriteMeals.filter(
+            (meal: string) =>
+              meal.toLowerCase() === params.favoriteMeal!.toLowerCase(),
+          ).length > 0,
+      );
     }
 
-    const dataToBeReturned = DB.slice(page * size, (page * size) + size)
+    const dataToBeReturned = DB.slice(page * size, page * size + size);
 
     return {
       cats: dataToBeReturned,
       page: page + 1,
-      size: dataToBeReturned.length
-    }
-
+      size: dataToBeReturned.length,
+    };
   } catch (error) {
     throw { status: 500, message: error };
   }
@@ -55,7 +57,8 @@ export const add = (newCat: Cat) => {
     const isAlreadyAdded =
       DB.Cats.findIndex(
         (cat: Cat) =>
-          cat.firstName === newCat.firstName && cat.lastName === newCat.lastName
+          cat.firstName === newCat.firstName &&
+          cat.lastName === newCat.lastName,
       ) > -1;
 
     if (isAlreadyAdded) {
@@ -78,7 +81,9 @@ export const add = (newCat: Cat) => {
 export const update = (catId: string, cat: StoredCat) => {
   try {
     const DB = getDatabase();
-    const indexForUpdate = DB.Cats.findIndex((cat: StoredCat) => cat.id === catId);
+    const indexForUpdate = DB.Cats.findIndex(
+      (cat: StoredCat) => cat.id === catId,
+    );
     if (indexForUpdate === -1) {
       throw {
         status: 400,
@@ -104,7 +109,9 @@ export const update = (catId: string, cat: StoredCat) => {
 export const remove = (catId: string) => {
   try {
     const DB = getDatabase();
-    const indexForDeletion = DB.Cats.findIndex((cat: StoredCat) => cat.id === catId);
+    const indexForDeletion = DB.Cats.findIndex(
+      (cat: StoredCat) => cat.id === catId,
+    );
     if (indexForDeletion === -1) {
       throw {
         status: 400,
