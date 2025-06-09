@@ -4,23 +4,23 @@ import * as catController from '../controllers/catController.js'
 export const catRoutes = () => {
   const router = express.Router();
   router.get('/',
-      catController.getAllCats
-  )   
-  
-  router.get('/:catId', 
-      catController.getCat
+    catController.getAllCats
   )
-  
-  router.post('/',  
-      catController.createCat
+
+  router.get('/:catId',
+    catController.getCat
   )
-  
-  router.patch('/:catId', 
-      catController.updateCat
+
+  router.post('/',
+    catController.createCat
   )
-  
-  router.delete('/:catId', 
-      catController.deleteCat
+
+  router.patch('/:catId',
+    catController.updateCat
+  )
+
+  router.delete('/:catId',
+    catController.deleteCat
   )
 
   return router;

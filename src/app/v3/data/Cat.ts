@@ -8,8 +8,8 @@ export const getAll = (params: SearchParams) => {
     const page = (params.page ?? 1) - 1
 
     if (params.colorType) {
-        DB = DB.filter((cat: Cat) =>
-            cat.colorType.toLowerCase().includes(params.colorType!.toLowerCase()))
+      DB = DB.filter((cat: Cat) =>
+        cat.colorType.toLowerCase().includes(params.colorType!.toLowerCase()))
     }
 
     if (params.favoriteMeal) {
@@ -21,7 +21,7 @@ export const getAll = (params: SearchParams) => {
     }
 
     const dataToBeReturned = DB.slice(page * size, (page * size) + size)
-    
+
     return {
       cats: dataToBeReturned,
       page: page + 1,
