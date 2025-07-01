@@ -1,5 +1,5 @@
-import { getDatabase, saveToDatabase } from "./utils.js";
-import type { SearchParams, Cat, StoredCat } from "../shared/types.js";
+import { getDatabase, saveToDatabase } from './utils.js';
+import type { SearchParams, Cat, StoredCat } from '../shared/types.js';
 
 export const getAll = (params: SearchParams) => {
   try {
@@ -93,7 +93,7 @@ export const update = (catId: string, cat: StoredCat) => {
     const updatedCat = {
       ...DB.Cats[indexForUpdate],
       ...cat,
-      updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
+      updatedAt: new Date().toLocaleString('en-US', { timeZone: 'UTC' }),
     };
     DB.Cats[indexForUpdate] = updatedCat;
     saveToDatabase(DB);
