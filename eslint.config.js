@@ -14,6 +14,7 @@ export default defineConfig([
   { files: ["**/*.md"], plugins: { markdown }, language: "markdown/gfm", extends: ["markdown/recommended"] },
   { rules: {
     ...tseslint.configs.recommended.rules,
-    "no-explicit-any": "warn"
+    "no-explicit-any": "warn",
+    "quotes": ["error", "single"]
   }}
 ]);

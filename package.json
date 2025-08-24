@@ -18,6 +18,7 @@
         "cors": "^2.8.5",
         "express": "^4.16.1",
         "jsonschema": "^1.4.1",
+        "mongodb": "^6.17.0",
         "uuid": "^9.0.0"
     },
     "devDependencies": {

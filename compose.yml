@@ -3,17 +3,31 @@ services:
     container_name: ts-catservice-docker
     restart: always
     ports: 
-      - 3001:${PORT}
+      - 3001:${NODE_PORT}
     env_file:
       - .env
     build: 
       context: .
       target: production
       args: 
-        - PORT=${PORT}
+        - PORT=${NODE_PORT}
     volumes: 
       - volume:/usr/src/app
       - ignore:/usr/src/app/node_modules/
+    networks:
+      - catservice-network
+    depends_on:
+      - mongo-database
+  mongo-database:
+    container_name: mongo-database
+    image: mongo
+    ports:
+      - 27017:${MONGO_PORT}
+    networks:
+      - catservice-network
+networks:
+  catservice-network:
+    driver: bridge
 volumes: 
   ignore:
   volume:
